@@ -60,4 +60,4 @@ jobs:
         with:
           app-name: 'amworks'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_004ECB05477D4B898C307B120E2DC19D }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_95F20B4C4B1544878D47837B8A9AB13A }}
