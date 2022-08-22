@@ -7,4 +7,4 @@ load_dotenv()
 
 
 def index(request):
-    return HttpResponse("hello")
+    return HttpResponse("Hello")
