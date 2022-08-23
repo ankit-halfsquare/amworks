@@ -1,3 +1,51 @@
 from django.test import TestCase
 
 # Create your tests here.
+
+
+#  {
+           
+#             (organization_id,
+#             name,
+#             code,
+#             project_administrator_id,
+#             company_id,
+#             city,
+#             state,
+#             country,
+#             status,
+#             cost,
+#             revenue,
+#             margin,
+#             email_address,
+#             create_date,
+#             create_user,
+#             update_date,
+#             update_user,
+#             obsolete: 0,
+#             item_name_track,
+#             item_name_order,
+#             item_name_table,
+#             item_name_alias,
+#             ta1_alias,
+#             ta2_alias,
+#             ta3_alias,
+#             ta4_alias,
+#             ta5_alias,
+#             sl1_list,
+#             sl1_alias,
+#             sl2_list,
+#             sl2_alias,
+#             sl3_list,
+#             sl3_alias,
+#             sl4_list,
+#             sl4_alias,
+#             sl5_list,
+#             sl5_alias,
+#             customization,
+#             role_management,
+#             comments,
+#             customer_feedback,
+#             results,
+#             building_id)
+#         }

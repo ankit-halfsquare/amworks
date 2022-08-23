@@ -44,7 +44,7 @@ class Project(models.Model):
     comments = models.TextField(blank=True, null=True)
     customer_feedback = models.TextField(blank=True, null=True)
     results = models.TextField(blank=True, null=True)
-    # building_id = models.IntegerField(blank=True, null=True)
+    building_id = models.IntegerField(blank=True, null=True)
 
     def __str__(self):
         return self.name
