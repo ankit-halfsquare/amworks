@@ -1,7 +1,7 @@
 from rest_framework.views import APIView 
 from rest_framework import status
 from rest_framework.response import Response
-from core.models import Project,Building
+from core.models import Project,Building,Test
 from .serializers import *
 
 
@@ -28,38 +28,16 @@ class ProjectView(APIView):
     def post(self, request,pk=None, *args, **kwargs):
         serializer = ProjectSerializer(data=request.data)
         if serializer.is_valid():
-            data = serializer.data  
-            val =[]
-            for k,v in data.items():
-                val.append(v)
-            query = f''' INSERT INTO project (name, company_id) VALUES {tuple(val)}; '''
-                                
-            print(query)
-            query = query.replace("None","")
-            my_custom_sql(query)
-            # serializer.save()
+            serializer.save()
             return Response({"message": " Record has been added", "data": serializer.data},status=status.HTTP_201_CREATED)
         return Response({"message": " Record has been not added"})
-
     
     def put(self, request, pk=None, *args, **kwargs):
         id = pk
-        serializer = ProjectSerializer(data=request.data)
-
-        # obj = Project.objects.get(id=id)
-        # serializer = ProjectSerializer(obj,data=request.data)
+        obj = Project.objects.get(id=id)
+        serializer = ProjectSerializer(obj,data=request.data)
         if serializer.is_valid():
-            data = serializer.data 
-            print(data)
-            raw = ''
-            for k,v in data.items():
-                if k != 'id':
-                    raw = raw + k + '=' +  "'" + str(v) + "'" + ' ,'
-
-            query = f''' UPDATE  project SET {raw[:-1]} WHERE id = id ; '''  
-            print(query)     
-            my_custom_sql(query)
-            # serializer.save()
+            serializer.save()
             return Response({"message": " Record has been updated", "data": serializer.data}, status=status.HTTP_200_OK)
         return Response({"message": " Record has not updated", "data": serializer.data})
 
@@ -104,6 +82,43 @@ class BuildingView(APIView):
     def delete(self, request, pk=None, *args, **kwargs):
         id = pk
         obj = Building.objects.get(id=id)
+        obj.delete()
+        return Response({ "message": " Record has been deleted"},status=status.HTTP_204_NO_CONTENT) 
+
+
+
+
+class TestView(APIView):
+    
+    def get(self, request,pk=None, *args, **kwargs):
+        Project_obj = Test.objects.all()
+        serializer = TestSerializer(Project_obj, many =True)
+        return Response({ "data":serializer.data})
+
+
+    
+    def post(self, request,pk=None, *args, **kwargs):
+        serializer = TestSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response({"message": " Record has been added", "data": serializer.data},status=status.HTTP_201_CREATED)
+        return Response({"message": " Record has been not added"})
+
+
+    
+    def put(self, request, pk=None, *args, **kwargs):
+        id = pk
+        obj = Test.objects.get(id=id)
+        serializer = TestSerializer(obj,data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response({"message": " Record has been updated", "data": serializer.data}, status=status.HTTP_200_OK)
+        return Response({"message": " Record has not updated", "data": serializer.data})
+
+    
+    def delete(self, request, pk=None, *args, **kwargs):
+        id = pk
+        obj = Test.objects.get(id=id)
         obj.delete()
         return Response({ "message": " Record has been deleted"},status=status.HTTP_204_NO_CONTENT) 
 

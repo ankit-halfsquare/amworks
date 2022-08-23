@@ -139,3 +139,11 @@ class Building(models.Model):
     class Meta:
         managed = False
         db_table = 'building' 
+
+
+
+
+class Test(models.Model):
+    name = models.CharField(max_length=50, blank=True, null=True)
+    code = models.CharField(max_length=50, blank=True, null=True)
+
