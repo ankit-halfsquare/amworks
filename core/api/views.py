@@ -20,8 +20,13 @@ def my_custom_sql(query):
 class ProjectView(APIView):
     
     def get(self, request,pk=None, *args, **kwargs):
-        Project_obj = Project.objects.all()
-        serializer = ProjectSerializer(Project_obj, many =True)
+        id = pk
+        if id:
+            Project_obj = Project.objects.get(id=id)
+            serializer = ProjectSerializer(Project_obj)
+        else:
+            Project_obj = Project.objects.all()
+            serializer = ProjectSerializer(Project_obj, many =True)
         return Response({ "data":serializer.data})
 
     
@@ -54,8 +59,14 @@ class ProjectView(APIView):
 class BuildingView(APIView):
     
     def get(self, request,pk=None, *args, **kwargs):
-        Project_obj = Building.objects.all()
-        serializer = BuildingSerializer(Project_obj, many =True)
+        id = pk
+        if id:
+            Building_obj = Project.objects.get(id=id)
+            serializer = BuildingSerializer(Building_obj)
+        else:
+            Building_obj = Project.objects.all()
+            serializer = BuildingSerializer(Building_obj, many =True)
+        
         return Response({ "data":serializer.data})
 
 
@@ -91,8 +102,13 @@ class BuildingView(APIView):
 class TestView(APIView):
     
     def get(self, request,pk=None, *args, **kwargs):
-        Project_obj = Test.objects.all()
-        serializer = TestSerializer(Project_obj, many =True)
+        id = pk
+        if id:
+            Test_obj = Project.objects.get(id=id)
+            serializer = TestSerializer(Test_obj)
+        else:
+            Test_obj = Test.objects.all()
+            serializer = TestSerializer(Test_obj, many =True)
         return Response({ "data":serializer.data})
 
 

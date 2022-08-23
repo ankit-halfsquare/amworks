@@ -11,8 +11,8 @@ urlpatterns = [
     path("building/", views.BuildingView.as_view(), name = "building"),
     path("building/<int:pk>/", views.ProjectView.as_view(), name = "updateDeleteBuilding"),
 
-    path("test/", views.TestView.as_view(), name = "updateDeleteBuilding"),
-    path("test/<int:pk>/", views.TestView.as_view(), name = "updateDeleteBuilding"),
+    path("test/", views.TestView.as_view(), name = "test"),
+    path("test/<int:pk>/", views.TestView.as_view(), name = "updateDeleteTest"),
 
 ]
 
