@@ -4,7 +4,7 @@
 
 <html>
 <head>
-	<title>Sidebar</title>
+	<title>AMWORKS</title>
 	<script type="text/javascript" src="{% static 'codebase/webix.js' %}"></script>
 	<link rel="stylesheet" type="text/css" href="{% static 'codebase/webix.css' %}">
 
@@ -53,7 +53,7 @@ dataset = [
 ]
 
 	webix.ready(function(){
-	gridA=webix.ui({
+	    gridA=webix.ui({
 			rows: [
 				{ view: "toolbar", padding:3, elements: [
 					{ view: "button", type: "icon", icon: "mdi mdi-menu",
@@ -92,8 +92,6 @@ dataset = [
                                 { map:"#comments#", id:"comments",header:{text:"Comments",autoheight:true,css:"multiline", content:"excelFilter", mode:"text" }, cssFormat:"", sort:"string",width:100, hidden:0 },
                                 { map:"#sl8_name#", id:"sl8_name",header:{text:"Procedure",autoheight:true,css:"multiline", content:"excelFilter", mode:"text" }, cssFormat:"", sort:"string",width:100, hidden:0 },
                                 { map:"#file_count#", id:"file_count",header:{text:"File Count",autoheight:true,css:"multiline", content:"excelFilter", mode:"number" }, cssFormat:"", sort:"int",width:100, hidden:0 }],
-                        height: 700,
-                        width: 1600,
                         data: dataset,
                         on:{
 								onItemDblClick:function(){
