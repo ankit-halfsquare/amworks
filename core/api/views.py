@@ -1,22 +1,158 @@
 from rest_framework.views import APIView 
-from rest_framework import status
+from rest_framework import status,generics
 from rest_framework.response import Response
-from core.models import Project,Building,Test
+from core.models import Project,Building,BuildingItem,Organization
 from .serializers import *
 
 
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.decorators import api_view
 
-from django.db import connection
-
-def my_custom_sql(query):
-    with connection.cursor() as cursor:
-        cursor.execute(query)
 
 
+# People tables API Views====================================People tables API Views================================================People tables API Views
+#
 
-    
+class PeopleListCreateAPIView(generics.ListCreateAPIView):
+    queryset = People.objects.all()
+    serializer_class = PeopleSerializer
+
+    # def perform_create(self, serializer): # optional if need any modification before save data
+    #     pass
+        # user=self.request.user
+        # title = serializer.validated_data.get('title')
+        # serializer.save(user=suser,title=title)
+        # serializer.save()
+
+
+class PeopleRetrieveAPIView(generics.RetrieveAPIView):
+    queryset = People.objects.all()
+    serializer_class = PeopleSerializer
+    lookup_feild = 'pk'
+
+
+class PeopleUpdateAPIView(generics.UpdateAPIView):
+    queryset = People.objects.all()
+    serializer_class = PeopleSerializer
+    lookup_feild = 'pk'
+
+    # def perform_update(self, serializer): # optional if need any modification before
+    #     title = serializer.validated_data.get('title')
+    #     content = serializer.validated_data.get('content') or None
+    #     if content is None:
+    #             content = title
+    #     instance = serializer.save(content=content)
+
+
+class PeopleDestroyAPIView(generics.DestroyAPIView):
+    queryset = People.objects.all()
+    serializer_class = PeopleSerializer
+    lookup_field = 'pk'
+
+
+
+# Project tables API Views====================================Project tables API Views================================================Project tables API Views
+#
+
+
+class ProjectListCreateAPIView(generics.ListCreateAPIView):
+    queryset = Project.objects.all()
+    serializer_class = ProjectSerializer
+
+class ProjectRetrieveAPIView(generics.RetrieveAPIView):
+    queryset = Project.objects.all()
+    serializer_class = ProjectSerializer
+    lookup_field = 'pk'
+
+class ProjectUpdateAPIView(generics.UpdateAPIView):
+    queryset = Project.objects.all()
+    serializer_class = ProjectSerializer
+    lookup_field = 'pk'
+
+class ProjectDestroyAPIView(generics.DestroyAPIView):
+    queryset = Project.objects.all()
+    serializer_class = ProjectSerializer
+
+# Building tables API Views====================================Building tables API Views================================================Building tables API Views
+#
+
+class BuildingListCreateAPIView(generics.ListCreateAPIView):
+    queryset = Building.objects.all()
+    serializer_class = BuildingSerializer
+
+class BuildingRetrieveAPIView(generics.RetrieveAPIView):
+    queryset = Building.objects.all()
+    serializer_class = BuildingSerializer
+    lookup_field = 'pk'
+
+class BuildingUpdateAPIView(generics.UpdateAPIView):
+    queryset = Building.objects.all()
+    serializer_class = BuildingSerializer
+    lookup_field = 'pk'
+
+class BuildingDestroyAPIView(generics.DestroyAPIView):
+    queryset = Building.objects.all()
+    serializer_class = BuildingSerializer
+
+# Organization tables API Views====================================Organization tables API Views================================================Organization tables API Views
+#
+class OrganizationListCreateAPIView(generics.ListCreateAPIView):
+    queryset = Organization.objects.all()
+    serializer_class = OrganizationSerializer
+
+class OrganizationRetrieveAPIView(generics.RetrieveAPIView):
+    queryset = Organization.objects.all()
+    serializer_class = OrganizationSerializer
+    lookup_field = 'pk'
+
+class OrganizationUpdateAPIView(generics.UpdateAPIView):
+    queryset = Organization.objects.all()
+    serializer_class = OrganizationSerializer
+    lookup_field = 'pk'
+
+class OrganizationDestroyAPIView(generics.DestroyAPIView):
+    queryset = Organization.objects.all()
+    serializer_class = OrganizationSerializer
+
+
+# BuildingItem tables API Views====================================BuildingItem tables API Views================================================BuildingItem tables API Views
+#
+class BuildingItemListCreateAPIView(generics.ListCreateAPIView):
+    queryset = BuildingItem.objects.all()
+    serializer_class = BuildingItemSerializer
+
+class BuildingItemRetrieveAPIView(generics.RetrieveAPIView):
+    queryset = BuildingItem.objects.all()
+    serializer_class = BuildingItemSerializer
+    lookup_field = 'pk'
+
+class BuildingItemUpdateAPIView(generics.UpdateAPIView):
+    queryset = BuildingItem.objects.all()
+    serializer_class = BuildingItemSerializer
+    lookup_field = 'pk'
+
+class BuildingItemDestroyAPIView(generics.DestroyAPIView):
+    queryset = BuildingItem.objects.all()
+    serializer_class = BuildingItemSerializer
+
+
+
+# End tables API Views==================================== End tables API Views================================================ End tables API Views
+#
+#
+#
+#
+#
+
+# Old Stuff====================================Old Stuff================================================Old Stuff
+#
+#
+#
+#
+#
+#
+
+
 class ProjectView(APIView):
     
     def get(self, request,pk=None, *args, **kwargs):
@@ -57,14 +193,13 @@ class ProjectView(APIView):
 
 
 class BuildingView(APIView):
-    
     def get(self, request,pk=None, *args, **kwargs):
         id = pk
         if id:
-            Building_obj = Project.objects.get(id=id)
+            Building_obj = Building.objects.get(id=id)
             serializer = BuildingSerializer(Building_obj)
         else:
-            Building_obj = Project.objects.all()
+            Building_obj = Building.objects.all()
             serializer = BuildingSerializer(Building_obj, many =True)
         
         return Response({ "data":serializer.data})
@@ -99,44 +234,10 @@ class BuildingView(APIView):
 
 
 
-class TestView(APIView):
-    
-    def get(self, request,pk=None, *args, **kwargs):
-        id = pk
-        if id:
-            Test_obj = Project.objects.get(id=id)
-            serializer = TestSerializer(Test_obj)
-        else:
-            Test_obj = Test.objects.all()
-            serializer = TestSerializer(Test_obj, many =True)
-        return Response({ "data":serializer.data})
 
 
-    
-    def post(self, request,pk=None, *args, **kwargs):
-        serializer = TestSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response({"message": " Record has been added", "data": serializer.data},status=status.HTTP_201_CREATED)
-        return Response({"message": " Record has been not added"})
 
 
-    
-    def put(self, request, pk=None, *args, **kwargs):
-        id = pk
-        obj = Test.objects.get(id=id)
-        serializer = TestSerializer(obj,data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response({"message": " Record has been updated", "data": serializer.data}, status=status.HTTP_200_OK)
-        return Response({"message": " Record has not updated", "data": serializer.data})
-
-    
-    def delete(self, request, pk=None, *args, **kwargs):
-        id = pk
-        obj = Test.objects.get(id=id)
-        obj.delete()
-        return Response({ "message": " Record has been deleted"},status=status.HTTP_204_NO_CONTENT) 
 
 
 
