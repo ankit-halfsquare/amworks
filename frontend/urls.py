@@ -4,6 +4,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-   path('table', views.static_db, name='static_db_example'),
-   path('', views.sidebar, name='webix'),
+   path('table/', views.static_db, name='static_db_example'),
+   path('sidebar/', views.sidebar, name='sidebar'),
+   path('', views.main, name='main'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

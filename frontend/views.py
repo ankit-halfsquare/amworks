@@ -7,3 +7,7 @@ def sidebar(request):
 
 def static_db(request):
     return render(request, 'frontend/static_db.html')
+
+
+def main(request):
+    return render(request, 'frontend/main.html')
