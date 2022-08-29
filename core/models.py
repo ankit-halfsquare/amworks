@@ -276,12 +276,6 @@ class BuildingItem(models.Model):
 
 
 
-
-
-
-
-
-
 class Test(models.Model):
     name = models.CharField(max_length=50, blank=True, null=True)
     code = models.CharField(max_length=50, blank=True, null=True)
