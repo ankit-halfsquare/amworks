@@ -1,7 +1,7 @@
 from rest_framework.views import APIView 
 from rest_framework import status,generics
 from rest_framework.response import Response
-from core.models import Project,Building,BuildingItem,Organization
+from core.models import Project,Building,BuildingItem,Organization,TestBuilding,TestBuildingItem
 from .serializers import *
 
 
@@ -137,6 +137,48 @@ class BuildingItemDestroyAPIView(generics.DestroyAPIView):
 
 
 
+# Building tables API Views====================================Building tables API Views================================================Building tables API Views
+#
+
+class TestBuildingListCreateAPIView(generics.ListCreateAPIView):
+    queryset = TestBuilding.objects.all()
+    serializer_class = TestBuildingSerializer
+
+class TestBuildingRetrieveAPIView(generics.RetrieveAPIView):
+    queryset = TestBuilding.objects.all()
+    serializer_class = TestBuildingSerializer
+    lookup_field = 'pk'
+
+class TestBuildingUpdateAPIView(generics.UpdateAPIView):
+    queryset = TestBuilding.objects.all()
+    serializer_class = TestBuildingSerializer
+    lookup_field = 'pk'
+
+class TestBuildingDestroyAPIView(generics.DestroyAPIView):
+    queryset = TestBuilding.objects.all()
+    serializer_class = TestBuildingSerializer
+
+
+# TestBuildingItem tables API Views====================================TestBuildingItem tables API Views================================================TestBuildingItem tables API Views
+#
+class TestBuildingItemListCreateAPIView(generics.ListCreateAPIView):
+    queryset = TestBuildingItem.objects.all()
+    serializer_class = TestBuildingItemSerializer
+
+class TestBuildingItemRetrieveAPIView(generics.RetrieveAPIView):
+    queryset = TestBuildingItem.objects.all()
+    serializer_class = TestBuildingItemSerializer
+    lookup_field = 'pk'
+
+class TestBuildingItemUpdateAPIView(generics.UpdateAPIView):
+    queryset = TestBuildingItem.objects.all()
+    serializer_class = TestBuildingItemSerializer
+    lookup_field = 'pk'
+
+class TestBuildingItemDestroyAPIView(generics.DestroyAPIView):
+    queryset = TestBuildingItem.objects.all()
+    serializer_class = TestBuildingItemSerializer
+
 # End tables API Views==================================== End tables API Views================================================ End tables API Views
 #
 #
@@ -230,16 +272,6 @@ class BuildingView(APIView):
         obj = Building.objects.get(id=id)
         obj.delete()
         return Response({ "message": " Record has been deleted"},status=status.HTTP_204_NO_CONTENT) 
-
-
-
-
-
-
-
-
-
-
 
 
 

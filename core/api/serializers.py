@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from core.models import Project,Building,Test,BuildingItem,People,Organization
+from core.models import Project,Building,BuildingItem,People,Organization,TestBuilding,TestBuildingItem
 
 class ProjectSerializer(serializers.ModelSerializer):
     class Meta:
@@ -36,5 +36,23 @@ class OrganizationSerializer(serializers.ModelSerializer):
         model = Organization
         # fields = '__all__'
         fields = ('id','name', 'code')
+
+
+
+
+
+class TestBuildingSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TestBuilding
+        fields = '__all__'
+        # fields = ('id','name', 'code')
+
+
+
+class TestBuildingItemSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TestBuildingItem
+        fields = '__all__'
+        # fields = ('id','name', 'code')
 
 

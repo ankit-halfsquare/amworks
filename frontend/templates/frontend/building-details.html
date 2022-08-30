@@ -1,0 +1,255 @@
+{% extends 'frontend/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-10">
+        <div class="card card-body">
+           <a class="btn btn-primary btn-sm btn-block" href={% url 'update-building'  data.id %}>
+                <h5 class="" > UPDATE BULDING DETAILS</h5>
+            </a>
+            
+            <div id="list-wrapper">
+                <table class="table table-sm">
+                    <tr>
+                        <th>Organization Id</th>
+                        <td>{{data.organization_id}}</td>
+                        <th>Name</th>
+                        <td id="data_number">{{data.name}}</td>
+
+                    </tr>
+                    <tr>
+                        <th>Code</th>
+                        <td>{{data.code}}</td>
+                        <th>City</th>
+                        <td>{{data.city}}</td>
+                    </tr>
+                    <tr>
+                        <th>Country</th>
+                        <td>{{data.country}}</td>
+                        <th>State</th>
+                        <td>{{data.state}}</td>
+
+                    </tr>
+                    <tr>
+                        <th>zip</th>
+                        <td>{{data.zip}}</td>
+                        <th>guid</th>
+                        <td>{{data.guid}}</td>
+
+                    </tr>
+                    <tr>
+                        <th>create_date</th>
+                        <td>{{data.create_date}}</td>
+                        <th>create_user</th>
+                        <td>{{data.create_user}}</td>
+                    </tr>
+                    <tr>
+                        <th>update_date</th>
+                        <td>{{data.update_date}}</td>
+                        <th>update_user</th>
+                        <td>{{data.update_user}}</td>
+                    </tr>
+                    <tr>
+                        <th>obsolete</th>
+                        <td>{{data.obsolete}}</td>
+                        <th>comments</th>
+                        <td>{{data.comments}}</td>
+                    </tr>
+                    <tr>
+                        <th>ta1_alias</th>
+                        <td>{{data.ta1_alias}}</td>
+                        <th>ta2_alias</th>
+                        <td>{{data.ta2_alias}}</td>
+                    </tr>
+                    <tr>
+                        <th>ta3_alias</th>
+                        <td>{{data.ta3_alias}}</td>
+                        <th>ta4_alias</th>
+                        <td>{{data.ta4_alias}}</td>
+                    </tr>
+                    <tr>
+                        <th>ta5_alias</th>
+                        <td>{{data.ta5_alias}}</td>
+                        <th>ta6_alias</th>
+                        <td>{{data.ta6_alias}}</td>
+                    </tr>
+                    <tr>
+                        <th>ta7_alias</th>
+                        <td>{{data.ta7_alias}}</td>
+                        <th>ta8_alias</th>
+                        <td>{{data.ta8_alias}}</td>
+                    </tr>
+                    <tr>
+                        <th>ta9_alias</th>
+                        <td>{{data.ta9_alias}}</td>
+                        <th>ta10_alias</th>
+                        <td>{{data.ta10_alias}}</td>
+                    </tr>
+                    <tr>
+                        <th>ta11_alias</th>
+                        <td>{{data.ta11_alias}}</td>
+                        <th>ta12_alias</th>
+                        <td>{{data.ta12_alias}}</td>
+                    </tr>
+                    <tr>
+                        <th>ta13_alias</th>
+                        <td>{{data.ta13_alias}}</td>
+                        <th>ta14_alias</th>
+                        <td>{{data.ta14_alias}}</td>
+                    </tr>
+                    <tr>
+                        <th>ta15_alias</th>
+                        <td>{{data.ta15_alias}}</td>
+                        <th>ta16_alias</th>
+                        <td>{{data.ta16_alias}}</td>
+                    </tr>
+                    <tr>
+                        <th>ta17_alias</th>
+                        <td>{{data.ta17_alias}}</td>
+                        <th>ta18_alias</th>
+                        <td>{{data.ta18_alias}}</td>
+                    </tr>
+                    <tr>
+                        <th>ta19_alias</th>
+                        <td>{{data.ta19_alias}}</td>
+                        <th>ta20_alias</th>
+                        <td>{{data.ta20_alias}}</td>
+                    </tr>
+
+                    <tr>
+                        <th>sl1_alias</th>
+                        <td>{{data.sl1_alias}}</td>
+                        <th>sl2_alias</th>
+                        <td>{{data.sl2_alias}}</td>
+                    </tr>
+                    <tr>
+                        <th>sl3_alias</th>
+                        <td>{{data.sl3_alias}}</td>
+                        <th>sl4_alias</th>
+                        <td>{{data.sl4_alias}}</td>
+                    </tr>
+                    <tr>
+                        <th>sl5_alias</th>
+                        <td>{{data.sl5_alias}}</td>
+                        <th>sl6_alias</th>
+                        <td>{{data.sl6_alias}}</td>
+                    </tr>
+                    <tr>
+                        <th>sl7_alias</th>
+                        <td>{{data.sl7_alias}}</td>
+                        <th>sl8_alias</th>
+                        <td>{{data.sl8_alias}}</td>
+                    </tr>
+                    <tr>
+                        <th>sl9_alias</th>
+                        <td>{{data.sl9_alias}}</td>
+                        <th>sl10_alias</th>
+                        <td>{{data.sl10_alias}}</td>
+                    </tr>
+                    <tr>
+                        <th>sl11_alias</th>
+                        <td>{{data.sl11_alias}}</td>
+                        <th>Borrower2 Middle Initial</th>
+                        <td>{{data.sl12_alias}}</td>
+                    </tr>
+                    <tr>
+                        <th>sl13_alias</th>
+                        <td>{{data.sl13_alias}}</td>
+                        <th>sl14_alias</th>
+                        <td>{{data.sl14_alias}}</td>
+                    </tr>
+                    <tr>
+                        <th>sl15_alias</th>
+                        <td>{{data.sl15_alias}}</td>
+                        <th>sl16_alias</th>
+                        <td>{{data.sl16_alias}}</td>
+                    </tr>
+                    <tr>
+                        <th>sl17_alias</th>
+                        <td>{{data.sl17_alias}}</td>
+                        <th>sl18_alias</th>
+                        <td>{{data.sl18_alias}}</td>
+                    </tr>
+                    <tr>
+                        <th>sl19_alias</th>
+                        <td>{{data.sl19_alias}}</td>
+                        <th>sl20_alias</th>
+                        <td>{{data.sl20_alias}}</td>
+                    </tr>
+
+                    <tr>
+                        <th>sl1_list</th>
+                        <td>{{data.sl1_list}}</td>
+                        <th>sl2_list</th>
+                        <td>{{data.sl2_list}}</td>
+                    </tr>
+                    <tr>
+                        <th>sl3_list</th>
+                        <td>{{data.sl3_list}}</td>
+                        <th>sl4_list</th>
+                        <td>{{data.sl4_list}}</td>
+                    </tr>
+                    <tr>
+                        <th>sl5_list</th>
+                        <td>{{data.sl5_list}}</td>
+                        <th>sl6_list</th>
+                        <td>{{data.sl6_list}}</td>
+                    </tr>
+                    <tr>
+                        <th>sl7_list</th>
+                        <td>{{data.sl7_list}}</td>
+                        <th>sl8_list</th>
+                        <td>{{data.sl8_list}}</td>
+                    </tr>
+                    <tr>
+                        <th>sl9_list</th>
+                        <td>{{data.sl9_list}}</td>
+                        <th>sl10_list</th>
+                        <td>{{data.sl10_list}}</td>
+                    </tr>
+                    <tr>
+                        <th>sl11_list</th>
+                        <td>{{data.sl11_list}}</td>
+                        <th>Borrower2 Middle Initial</th>
+                        <td>{{data.sl12_list}}</td>
+                    </tr>
+                    <tr>
+                        <th>sl13_list</th>
+                        <td>{{data.sl13_list}}</td>
+                        <th>sl14_list</th>
+                        <td>{{data.sl14_list}}</td>
+                    </tr>
+                    <tr>
+                        <th>sl15_list</th>
+                        <td>{{data.sl15_list}}</td>
+                        <th>sl16_list</th>
+                        <td>{{data.sl16_list}}</td>
+                    </tr>
+                    <tr>
+                        <th>sl17_list</th>
+                        <td>{{data.sl17_list}}</td>
+                        <th>sl18_list</th>
+                        <td>{{data.sl18_list}}</td>
+                    </tr>
+                    <tr>
+                        <th>sl19_list</th>
+                        <td>{{data.sl19_list}}</td>
+                        <th>sl20_list</th>
+                        <td>{{data.sl20_list}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+{% block script_file %}
+<script>
+
+
+
+</script>
+{% endblock %}

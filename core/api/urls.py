@@ -43,6 +43,20 @@ urlpatterns = [
     path("organization/delete/<int:pk>/", views.OrganizationDestroyAPIView.as_view(), name = "OrganizationDestroyAPIView"),
 
     
+    # building urls==================================== building urls================================================ building urls
+    #
+    path("test-building/", views.TestBuildingListCreateAPIView.as_view(), name = "TestBuildingListCreateAPIView"),
+    path("test-building/<int:pk>/", views.TestBuildingRetrieveAPIView.as_view(), name = "TestBuildingRetrieveAPIView"),
+    path("test-building/update/<int:pk>/", views.TestBuildingUpdateAPIView.as_view(), name = "TestBuildingUpdateAPIView"),
+    path("test-building/delete/<int:pk>/", views.TestBuildingDestroyAPIView.as_view(), name = "TestBuildingDestroyAPIView"),
+
+    # Testbuilding-item urls==================================== Testbuilding-item urls================================================ Testbuilding-item urls
+    #
+    path("test-building-item/", views.TestBuildingItemListCreateAPIView.as_view(), name = "TestBuildingItemListCreateAPIView"),
+    path("test-building-item/<int:pk>/", views.TestBuildingItemRetrieveAPIView.as_view(), name = "TestBuildingItemRetrieveAPIView"),
+    path("test-building-item/update/<int:pk>/", views.TestBuildingItemUpdateAPIView.as_view(), name = "TestBuildingItemUpdateAPIView"),
+    path("test-building-item/delete/<int:pk>/", views.TestBuildingItemDestroyAPIView.as_view(), name = "TestBuildingItemDestroyAPIView"),
+
 
    
 

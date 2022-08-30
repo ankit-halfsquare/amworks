@@ -1,0 +1,69 @@
+{% extends 'frontend/base.html' %}
+{% load static %}
+{%load crispy_forms_tags %}
+
+{% block content %}
+<div class="container ">
+ <div class="col-md">
+    <form id="myForm" , method="POST">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+
+        {{ form|crispy }}
+        <button class="btn btn-primary btn-sm btn-block" type="submit">Submit</button>
+    </form>
+</div>
+</div>
+{% endblock %}
+
+{% block script_file %}
+<script>
+
+    var form = document.getElementById("myForm");
+    form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        var serializedData = $(this).serialize();
+        var url = window.location.href;
+        console.log(url)
+        if (url.includes("update")) {
+            var method = "PUT"
+
+            var pk = url.split("/");
+            console.log(pk)
+            
+            pk = pk[pk.length - 1]
+            console.log(pk)
+
+
+            var Url = "{% url 'TestBuildingUpdateAPIView' pk=1234 %}"
+            Url = Url.replace('1234', pk);
+
+            console.log(method, Url)
+        } else {
+            var Url = "{% url 'TestBuildingListCreateAPIView' %}"
+            var method = "POST"
+
+            console.log(method, Url)
+
+        }
+
+        $.ajax({
+            method: method,
+            url: Url,
+            data: serializedData,
+        }).done(function (msg) {
+            console.log("msg", msg);
+            var Redirect = "{% url 'home' %}"
+            window.location.href = Redirect;
+
+        }).fail(function (error) {
+            console.log("error", error.responseJSON);
+        });
+
+
+
+    });
+
+</script>
+{% endblock %}
