@@ -6,12 +6,12 @@ from .models import Building,Project,People,Organization,BuildingItem,TestBuildi
 
 
 class TestBuildingAdmin(admin.ModelAdmin):
-    exclude=("guid ",)
-    readonly_fields=('guid', )
+    exclude=("guid ","create_date","update_date",)
+    readonly_fields=("guid ","create_date","update_date",)
 
 class TestBuildingItemAdmin(admin.ModelAdmin):
-    exclude=("guid ",)
-    readonly_fields=('guid', )
+    exclude=("guid ","create_date","update_date",)
+    readonly_fields=("guid ","create_date","update_date",)
 
 
 # admin.site.register(TestBuilding, TestBuildingAdmin)

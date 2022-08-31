@@ -20,7 +20,7 @@
             </thead>
             <tbody id="table-body">
                 
-                    <th scope="col">Loding....</th>
+                    <th scope="col">Loading....</th>
 
             
             </tbody>
@@ -37,12 +37,9 @@
     $(document).ready(function () {
 
 
-
-
         function getBuildinds() {
 
             var url = "{% url 'TestBuildingListCreateAPIView' %}"
-
 
             $.ajax({
                 url: url,
@@ -50,7 +47,7 @@
                 dataType: "json",
                 success: function (data) {
                     console.log(data);
-                    craeteBuildingTable(data)
+                     Zoom zoom(data)
                 },
                 error: function (error) {
                     console.log(`Error ${error}`);

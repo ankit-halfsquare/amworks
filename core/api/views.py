@@ -8,6 +8,8 @@ from .serializers import *
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.decorators import api_view
 
+import uuid
+
 
 
 # People tables API Views====================================People tables API Views================================================People tables API Views

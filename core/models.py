@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.validators import MaxValueValidator
+import uuid
 
 
 
@@ -25,9 +26,6 @@ class Organization(models.Model):
     class Meta:
         managed = False
         db_table = 'organization'
-
-
-
 
 
 
@@ -58,8 +56,6 @@ class People(models.Model):
     class Meta:
         managed = False
         db_table = 'people'
-
-
 
 
 
@@ -285,9 +281,9 @@ class TestBuilding(models.Model):
     state = models.CharField(max_length=50, blank=True, null=True)
     country = models.CharField(max_length=50, blank=True, null=True)
     status = models.CharField(max_length=50, blank=True, null=True)
-    create_date = models.DateTimeField(blank=True, null=True)
+    create_date = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     create_user = models.IntegerField(blank=True, null=True)
-    update_date = models.DateTimeField(blank=True, null=True)
+    update_date = models.DateTimeField(auto_now=True, blank=True, null=True)
     update_user = models.IntegerField(blank=True, null=True)
     obsolete = models.SmallIntegerField(blank=True, null=True)
     comments = models.TextField(blank=True, null=True)
@@ -352,7 +348,9 @@ class TestBuilding(models.Model):
     sl20_alias = models.CharField(max_length=255, blank=True, null=True)
     sl20_list = models.IntegerField(blank=True, null=True)
     zip = models.CharField(max_length=128, blank=True, null=True)
-    guid = models.CharField(max_length=36, blank=True, null=True)
+    # guid = models.CharField(max_length=36, blank=True, null=True)
+    guid = models.UUIDField(default=uuid.uuid4, editable=False, unique=True,blank=True, null=True)
+    
 
 
     def __str__(self):
@@ -414,11 +412,12 @@ class TestBuildingItem(models.Model):
     sl19 = models.IntegerField(blank=True, null=True)
     sl20 = models.IntegerField(blank=True, null=True)
     obsolete = models.SmallIntegerField(blank=True, null=True)
-    create_date = models.DateTimeField(blank=True, null=True)
+    create_date = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     create_user = models.IntegerField(blank=True, null=True)
-    update_date = models.DateTimeField(blank=True, null=True)
+    update_date = models.DateTimeField(auto_now=True, blank=True, null=True)
     update_user = models.IntegerField(blank=True, null=True)
-    guid = models.CharField(max_length=255, blank=True, null=True)
+    # guid = models.CharField(max_length=255, blank=True, null=True)
+    guid = models.UUIDField(default=uuid.uuid4, editable=False, unique=True,blank=True, null=True)
     additional_data_type_form_instance_id = models.IntegerField(blank=True, null=True)
     additional_data_type_form_name = models.CharField(max_length=255, blank=True, null=True)
     building_item_category_id = models.IntegerField(blank=True, null=True)
