@@ -3,7 +3,68 @@
 {%load crispy_forms_tags %}
 
 {% block content %}
-<div class="container ">
+<section class="section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+              <div class="tableheader">
+                <h4 class="section-title mb-0">Add new Building</h4>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="details-card">
+                  <div class="row">
+                    <!-- loop  -->
+                    <div class="col-md-4">
+                      <div class="inputbox">
+                        <small>Organization Id</small>
+                        <input type="text" class="form-control" placeholder="Organization id" />
+                      </div>
+                    </div>
+                    <!-- loop  -->
+                    <div class="col-md-4">
+                      <div class="inputbox">
+                        <small>Name</small>
+                        <input type="text" class="form-control" placeholder="Name" />
+                      </div>
+                    </div>
+                    <!-- loop  -->
+                    <div class="col-md-4">
+                      <div class="inputbox">
+                        <small>Code</small>
+                        <input type="text" class="form-control" placeholder="Code" />
+                      </div>
+                    </div>
+                    <!-- loop  -->
+                    <div class="col-md-4">
+                      <div class="inputbox">
+                        <small>City</small>
+                        <input type="text" class="form-control" placeholder="City" />
+                      </div>
+                    </div>
+                    <!-- loop  -->
+                    <div class="col-md-4">
+                      <div class="inputbox">
+                        <small>State</small>
+                        <input type="text" class="form-control" placeholder="State" />
+                      </div>
+                    </div>
+                     
+                    
+                    <!-- loop  -->
+                    <div class="col-md-12 mt-3 border-top pt-4">
+                        <button class="btn btn-primary btn-round">Submit</button>
+                        <button class="btn btn-secondary ml-3 btn-round">Cancel</button>
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+    </div>
+</section> 
+
+
+{% comment %} <div class="container ">
  <div class="col-md">
     <form id="myForm" , method="POST">
         {% csrf_token %}
@@ -13,7 +74,7 @@
         <button class="btn btn-primary btn-sm btn-block" type="submit">Submit</button>
     </form>
 </div>
-</div>
+</div> {% endcomment %}
 {% endblock %}
 
 {% block script_file %}

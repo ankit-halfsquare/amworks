@@ -2,7 +2,60 @@
 {% load static %}
 
 {% block content %}
-<div class="row justify-content-center">
+<section class="section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+              <div class="tableheader">
+                <h4 class="details-title mb-0"><small class="text-muted d-block font-12">Building Name</small>Cade Fuller</h4>
+                <h4 class="details-title mb-0 ml-4"><small class="text-muted d-block font-12">Organization ID</small>#6478575</h4>
+                <h4 class="details-title mb-0 ml-4 mr-auto"><small class="text-muted d-block font-12">City</small>New York</h4>
+                <a class="btn btn-primary btn-round" href={% url 'update-building'  data.id %}>Edit</a>
+                <a class="btn btn-danger btn-round ml-3" href="{% url 'home' %}">Back</a>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="details-card">
+                  <div class="row">
+                    <!-- loop  -->
+                    <div class="col-md-4">
+                      <div class="detilslist">
+                        <small>Organization Id</small>
+                        <label>6478575</label>
+                      </div>
+                    </div>
+                    <!-- loop  -->
+                    <div class="col-md-4">
+                        <div class="detilslist">
+                          <small>	Name</small>
+                          <label>Cade Fuller</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="detilslist">
+                          <small>Code</small>
+                          <label>79467345</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="detilslist">
+                          <small>City</small>
+                          <label>New Jersey</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="detilslist">
+                          <small>Country</small>
+                          <label>USA</label>
+                        </div>
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+    </div>
+</section>
+{% comment %} <div class="row justify-content-center">
     <div class="col-md-10">
         <div class="card card-body">
            <a class="btn btn-primary btn-sm btn-block" href={% url 'update-building'  data.id %}>
@@ -242,7 +295,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> {% endcomment %}
 {% endblock %}
 
 
