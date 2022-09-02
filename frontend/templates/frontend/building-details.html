@@ -21,7 +21,7 @@
                     {% if key != 'id' %}
                     <div class="col-md-4">
                         <div class="detilslist">
-                          <small>	{{key}}</small>
+                          <small >	{{key|title}}</small>
                           <label>{{values}}</label>
                         </div>
                     </div>
@@ -39,8 +39,6 @@
 
 {% block script_file %}
 <script>
-
-
 
 </script>
 {% endblock %}

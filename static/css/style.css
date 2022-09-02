@@ -1,17 +1,17 @@
 html body {font-family: 'Inter', sans-serif;}
 body .btn-primary  {
-    background-color: #4f46e5;
-    border-color: #4f46e5;
+    background-color: #B40814;
+    border-color: #B40814;
     color: #fff !important;
 }
 body .btn {padding: 8px 15px;}
 body .btn-outline-primary  {
-    border-color: #4f46e5;
-    color: #4f46e5 !important;
+    border-color: #B40814;
+    color: #B40814 !important;
 }
 body .btn-outline-primary:hover  {
-    background-color: #4f46e5;
-    border-color: #4f46e5;
+    background-color: #B40814;
+    border-color: #B40814;
     color: #fff !important;
 }
 body .btn-primary:hover  {
@@ -19,7 +19,7 @@ body .btn-primary:hover  {
     border-color: #261fb7;
 }
 body h1, body h2, body h3, body h4 {font-weight: 600;}
-.topheader.navbar-expand-lg .navbar-nav .nav-link:hover {color: #4f46e5;}
+.topheader.navbar-expand-lg .navbar-nav .nav-link:hover {color: #B40814;}
 body .btn-round {border-radius: 25px; min-width: 100px; padding-left: 20px; padding-right: 20px; }
 .btn-circle {width: 30px; height: 30px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; }
 /* Header  */
@@ -51,7 +51,7 @@ small.font-12 {font-size: 12px; font-weight: 300;}
 .details-card .detilslist label {display: block; font-weight: 500; color: #000; margin-bottom: 0px;}
 .inputbox {margin-bottom: 15px;}
 .inputbox .form-control {height: 45px; border-radius: 0px; font-size: 15px; margin-top: 4px; }
-.inputbox .form-control:focus {box-shadow: none; border-color: #4f46e5;}
+.inputbox .form-control:focus {box-shadow: none; border-color: #B40814;}
 .details-title {font-size: 18px;}
 
 
@@ -59,7 +59,7 @@ small.font-12 {font-size: 12px; font-weight: 300;}
 .loader {
     border: 8px solid #f3f3f3;
     border-radius: 50%;
-    border-top: 8px solid #4f46e5;
+    border-top: 8px solid #B40814;
     width: 120px;
     height: 120px;
     -webkit-animation: spin 2s linear infinite; 
