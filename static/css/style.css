@@ -77,3 +77,12 @@ small.font-12 {font-size: 12px; font-weight: 300;}
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
   } 
+
+
+.section .form-group {
+    margin-bottom: 1rem;
+    display: inline-block;
+    width: 33%;
+    padding-left: 15px;
+    padding-right: 15px;
+}

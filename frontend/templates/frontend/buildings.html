@@ -27,7 +27,9 @@
                         </tr>
                     </thead>
                     <tbody id="table-body">
-                      
+                        <div id = "loaderwrapper" class="loaderwrapper">
+                            <div class="loader"></div>
+                        </div>
                     </tbody>
                 </table>
             </div>
@@ -76,7 +78,7 @@
                 var updateUrl ="{% url 'update-building'  pk=12345 %}" 
                 
                 viewUrl = viewUrl.replace('12345', row.id);
-                updateUrl = viewUrl.replace('12345', row.id);
+                updateUrl = updateUrl.replace('12345', row.id);
 
                 console.log('viewUrl==>', viewUrl)
 
@@ -96,8 +98,8 @@
                     + `</tr>`
             }
             var wrapper = document.getElementById("table-body");
-            wrapper.innerHTML = "";
-            wrapper.innerHTML += item;
+            document.getElementById('loaderwrapper').style.display = 'none'
+            wrapper.innerHTML = item;
         }
     }) 
 </script>

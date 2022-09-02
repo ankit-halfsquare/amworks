@@ -32,6 +32,7 @@ def home(request):
 def viewBuilding(request,pk):
     Building_obj = TestBuilding.objects.get(id=pk)
     serializer = TestBuildingSerializer(Building_obj)
+   
     context = {"data":serializer.data}
     return render(request, 'frontend/building-details.html',context)
 
