@@ -22,9 +22,14 @@ def static_db(request):
 
 
 def main(request):
-    return render(request, 'frontend/buildings.html')
+    return render(request, 'frontend/webix/base.html')
 
 
+
+
+
+
+#============================================================
 def home(request):
     return render(request, 'frontend/buildings.html')
 
