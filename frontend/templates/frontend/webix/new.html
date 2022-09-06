@@ -114,11 +114,7 @@
             {
               "id": "list",
 							"view": "dataview",
-							"template": "<div class=''> <div class='dataview-font'> #key# </div> <div class='font2'> #data# </div> </div>",
-						
-              
-           
-							
+							"template": "<div class=''> <div class='dataview-font'> #key# </div> <div class='font2'> #data# </div> </div>",		
 						},
             {
               cols: [
@@ -178,7 +174,7 @@
                 on: {
                   onAfterSelect: function (id) {
                     if(this.getItem(id).value=="Add Building"){
-                      webix.send("http://localhost:8000/webix/add/",null,"GET")
+                      webix.send("https://amworksweb.azurewebsites.net/webix/add/",null,"GET")
                     }
                     webix.message("Selected: " + this.getItem(id).value);
                   },
