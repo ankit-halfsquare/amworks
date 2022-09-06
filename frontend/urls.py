@@ -5,6 +5,8 @@ from django.conf.urls.static import static
 
 urlpatterns = [
    path('webix/', views.main, name='main'),
+   path('webix/add/', views.add, name='add'),
+   path('webix/update/<int:pk>', views.add, name='update'),
    path('webix/sidebar/', views.sidebar, name='sidebar'),
 
 

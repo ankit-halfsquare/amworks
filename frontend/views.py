@@ -22,7 +22,13 @@ def static_db(request):
 
 
 def main(request):
-    return render(request, 'frontend/webix/base.html')
+    return render(request, 'frontend/webix/new.html')
+
+def add(request,pk=None):
+    conntext={
+        "pk":pk
+    }
+    return render(request, 'frontend/webix/addData.html',conntext)
 
 
 

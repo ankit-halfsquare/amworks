@@ -1,0 +1,123 @@
+{% load static %}
+
+<!doctype html>
+
+<html>
+
+<head>
+    <title>Sidebar</title>
+    <script type="text/javascript" src="{% static 'codebase/webix.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'codebase/webix.css' %}">
+
+    <link rel="stylesheet" href="//cdn.webix.com/materialdesignicons/5.8.95/css/materialdesignicons.min.css?v=9.2.2"
+        type="text/css" charset="utf-8">
+    <script type="text/javascript" src="{% static 'data/data.js' %}"></script>
+
+
+    <style>
+        .app_button button {
+            padding: 0;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <script type="text/javascript">
+
+
+        {% block webix %}
+
+        {% endblock %}
+        var menu = {
+            view: "menu", id: "top:menu",
+            css: "app_menu",
+            width: 180, layout: "y", select: true,
+            template: "<span class='webix_icon #icon#'></span> #value# ",
+            data: [
+                { value: "Building", id: "start", icon: "wxi-columns" },
+
+                // { value:"Dashboard", id:"start", icon:"wxi-columns" },
+
+            ]
+        };
+        webix.ready(function () {
+            webix.ui({
+                "id": 1662444584548,
+                "rows": [
+                    {
+                        "cols": [{
+                            "cols": [
+                                {
+                                    view: "toolbar",
+                                    css: "webix_dark",
+                                    padding: { right: 10, left: 10 },
+                                    elements: [{ view: "label", label: "My App" }],
+                                    height: 0,
+                                },
+                            ]
+                        }
+                        ]
+
+                    },
+                    {
+                        "cols": [
+                            { "view": "sidebar", data: menu_data, autoheight: true, autowidth: true, },
+
+                            {
+                                "url": "",
+                                 data: fetchApi(),
+                                 columns: [
+                                                { id: "id", header: "ID", css: "rank", width: 50 },
+                                                { id: "organization_id", header: "organization_id" },
+
+                                                { id: "name", header: "Name", width: 100 },
+
+                                                {
+                                                    id: "code",
+                                                    header: "Code",
+                                                    sort: "string",
+                                                    fillspace: false,
+                                                    hidden: false,
+                                                },
+                                                {
+                                                    id: "city",
+                                                    header: "City",
+                                                    sort: "string",
+                                                    fillspace: false,
+                                                    hidden: false,
+                                                },
+                                                {
+                                                    id: "state",
+                                                    header: "State",
+                                                    sort: "string",
+                                                    fillspace: false,
+                                                    hidden: false,
+                                                },
+                                                {
+                                                    id: "country",
+                                                    header: "Country",
+                                                    sort: "string",
+                                                    fillspace: false,
+                                                    hidden: false,
+                                                },
+                                                {
+                                                    header: "Action",
+                                                    template:
+                                                    "<input class='viewbtn btn' type='button' value='View'>",
+                                                    width: 120,
+                                                },],
+                                "view": "datatable"
+                            },
+                           
+                        ]
+                    }
+                ]
+            });
+        });
+
+    </script>
+</body>
+
+</html>

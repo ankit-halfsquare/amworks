@@ -1,0 +1,273 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Form</title>
+    <script
+      type="text/javascript"
+      src="{% static 'codebase/webix.js' %}"
+    ></script>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'codebase/webix.css' %}"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="//cdn.webix.com/materialdesignicons/5.8.95/css/materialdesignicons.min.css?v=9.2.2"
+      type="text/css"
+      charset="utf-8"
+    />
+    <script type="text/javascript" src="{% static 'data/data.js' %}"></script>
+    <style>
+    .dataview-font{
+      font-size: 15px;
+       font-weight: bold;
+    }
+    .font2{
+      font-size: 15px;
+    }
+      .webix_header {
+        font-weight: bold;
+        font-size: 25px;
+        margin-top: 10px;
+      }
+      .webix_column.webix_last > div {
+        align-items: center;
+        border-right-width: 0px;
+        justify-content: center;
+        display: flex;
+      }
+      .btn {
+        background: #27ae60;
+        color: #ffffff;
+        border-radius: 20px;
+        padding: 1px 10px;
+      }
+      .key_font {
+        font-size: 20px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        font-weight: bold;
+      }
+      .data_font {
+        font-size: 16px;
+        padding: 5px;
+        border: 1px solid #000000;
+      }
+      .webix_dt_editor input,
+      .webix_dt_editor select {
+        font-size: 18px;
+      }
+      .webix_secondary .webix_button {
+        font-size: 18px;
+      }
+      .webix_primary .webix_button {
+        font-size: 18px;
+      }
+      
+    </style>
+  </head>
+  <body>
+    <script type="text/javascript">
+   
+
+      webix.protoUI(
+        {
+          name: "editlist",
+        },
+        webix.EditAbility,
+        webix.ui.list
+      );
+
+      webix.ui({
+        view: "window",
+        id: "dt",
+        head: "",
+        modal: true,
+        position: "center",
+        
+        
+        height: 600,
+        width: 1400,
+        close: true,
+        onHide: () => {
+          $$("list").clearAll();
+        },
+        css: "window_edit_list",
+        body: {
+          rows: [
+            
+            {
+              "id": "list",
+							"view": "dataview",
+							"template": "<div class=''> <div class='dataview-font'> #key# </div> <div class='font2'> #data# </div> </div>",
+						
+              
+           
+							
+						},
+            {
+              cols: [
+                {
+                  view: "button",
+                  label: "Update Data",
+                  css: "webix_primary",
+                  inputWidth: 200,
+                  align: "center",
+                  click: function () {
+                    var updateUrl ="{% url 'update'  pk=1234 %}"
+                    updateUrl = updateUrl.replace('1234', data.id);
+
+                    console.log("updateUrl",updateUrl)
+                    webix.send(updateUrl, null, "GET");
+                    console.log("Name", data.id);
+                    $$("dt").hide();
+                   // $$("data").add({
+                   //   name: $$("list").getValues(),
+                  //  });
+                  },
+                },
+                {
+                  view: "button",
+                  label: "Cancel",
+                  inputWidth: 200,
+                  align: "center",
+                  click: function () {
+                    $$("dt").hide();
+                    $$("list").clearAll();
+                  },
+                },
+              ],
+            },
+          ],
+        },
+      });
+
+  
+      webix.ui({
+        rows: [
+          
+          {
+            view: "toolbar",
+            css: "webix_dark",
+            padding: { right: 10, left: 10 },
+            elements: [{ view: "label", label: "My App" }],
+            height: 0,
+          },
+          {
+            cols: [
+              {
+                view: "sidebar",
+                data: menu_data,
+                autoheight:true,
+                autowidth:true,
+                on: {
+                  onAfterSelect: function (id) {
+                    if(this.getItem(id).value=="Add Building"){
+                      webix.send("http://localhost:8000/webix/add/",null,"GET")
+                    }
+                    webix.message("Selected: " + this.getItem(id).value);
+                  },
+                },
+              },
+              {
+                view: "datatable",
+                scrollX: true,
+                scrollY: true,
+                id: "data",
+                data: fetchApi(),
+                undo: false,
+                sort: true,
+                columns: [
+                  { id: "id", header: "ID", css: "rank", width: 50 },
+                  { id: "organization_id", header: "organization_id" },
+
+                  { id: "name", header: "Name", width: 100 },
+
+                  {
+                    id: "code",
+                    header: "Code",
+                    sort: "string",
+                    fillspace: false,
+                    hidden: false,
+                  },
+                  {
+                    id: "city",
+                    header: "City",
+                    sort: "string",
+                    fillspace: false,
+                    hidden: false,
+                  },
+                  {
+                    id: "state",
+                    header: "State",
+                    sort: "string",
+                    fillspace: false,
+                    hidden: false,
+                  },
+                  {
+                    id: "country",
+                    header: "Country",
+                    sort: "string",
+                    fillspace: false,
+                    hidden: false,
+                  },
+                  {
+                    id: "zip",
+                    header: "Zip",
+                    sort: "string",
+                    fillspace: false,
+                    hidden: false,
+                  },
+                  {
+                    id: "status",
+                    header: "Status",
+                    fillspace: false,
+                    hidden: false,
+                  },
+                  { id: "create_date", header: "Create_date" },
+                  { id: "create_user", header: "create_user" },
+                  { id: "update_date", header: "update_date" },
+                 
+
+                  {
+                    header: "Action",
+                    template:
+                      "<input class='viewbtn btn' type='button' value='View'>",
+                    width: 100,
+                  },
+                ],
+                // a click behavior for the cell with a button styled with 'delbtn' class
+                onClick: {
+                  viewbtn: function (e, id, trg) {
+                    data = this.getItem(id);
+                    $$("list").clearAll();
+                    for (key in data) {
+                      $$("list").add({ key, data: data[key] });
+                    }
+                    $$("dt").show();
+                    //$$('myfrm').bind(data)
+                  },
+                },
+              },
+            ],
+          },
+        ],
+      });
+    </script>
+  </body>
+</html>

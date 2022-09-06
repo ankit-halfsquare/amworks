@@ -1,0 +1,425 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Form</title>
+    <script
+      type="text/javascript"
+      src="{% static 'codebase/webix.js' %}"
+    ></script>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'codebase/webix.css' %}"
+    />
+
+    <link
+      rel="stylesheet"
+      href="//cdn.webix.com/materialdesignicons/5.8.95/css/materialdesignicons.min.css?v=9.2.2"
+      type="text/css"
+      charset="utf-8"
+    />
+
+    <script type="text/javascript" src="{% static 'data/data.js' %}"></script>
+
+    <style>
+      .textbox {
+        width: 300px;
+      }
+    </style>
+  </head>
+  <body>
+    <script type="text/javascript">
+      webix.ui({
+        rows: [
+          {
+            view: "toolbar",
+            css: "webix_dark",
+            padding: { right: 10, left: 10 },
+            elements: [{ view: "label", label: "Home" ,click: home}], 
+             
+          },
+          {
+            cols: [
+              {
+                autoheight: false,
+                id: "form",
+                view: "form",
+                css: "textbox",
+                scrollY: true,
+                scrollX: true,
+
+                rows: [
+                  {
+                    cols: [
+                      {
+                        view: "text",
+                        type: "number",
+                        label: "organization_id",
+                        name: "organization_id",
+                       
+                      },
+                      { view: "text", label: "Name", name: "name" },
+                      {
+                        view: "text",
+                        label: "Code",
+                        name: "code",
+                      },
+                      { view: "text", label: "City", name: "city" },
+                    ],
+                  },
+                  {
+                    cols: [
+                      { view: "text", label: "State", name: "state" },
+                      { view: "text", label: "Country", name: "country" },
+                      { view: "text", label: "Zip", name: "zip" },
+                      { view: "text", label: "Status", name: "status" },
+                    ],
+                  },
+                  {
+                    cols: [
+                      {
+                        view: "text",
+                        label: "Create_date",
+                        name: "create_date",
+                      },
+                      {
+                        view: "text",
+                        type: "number",
+                        name: "create_user",
+                        label: "create_user",
+                      },
+                      {
+                        view: "text",
+                        name: "update_date",
+                        label: "update_date",
+                      },
+                      {
+                        view: "text",
+                        type: "number",
+                        name: "update_user",
+                        label: "update_user",
+                      },
+                    ],
+                  },
+                  {
+                    cols: [
+                      { view: "text", name: "ta1_alias", label: "ta1_alias" },
+                      { view: "text", name: "ta2_alias", label: "ta2_alias" },
+                      { view: "text", name: "ta3_alias", label: "ta3_alias" },
+                      { view: "text", name: "ta4_alias", label: "ta4_alias" },
+                    ],
+                  },
+                  {
+                    cols: [
+                      { view: "text", name: "ta5_alias", label: "ta5_alias" },
+                      { view: "text", name: "ta6_alias", label: "ta6_alias" },
+                      { view: "text", name: "ta7_alias", label: "ta7_alias" },
+                      { view: "text", name: "ta8_alias", label: "ta8_alias" },
+                    ],
+                  },
+                  {
+                    cols: [
+                      { view: "text", name: "ta9_alias", label: "ta9_alias" },
+                      { view: "text", name: "ta10_alias", label: "ta10_alias" },
+                      { view: "text", name: "ta11_alias", label: "ta11_alias" },
+                      { view: "text", name: "ta12_alias", label: "ta12_alias" },
+                    ],
+                  },
+                  {
+                    cols: [
+                      { view: "text", name: "ta13_alias", label: "ta13_alias" },
+                      { view: "text", name: "ta14_alias", label: "ta14_alias" },
+                      { view: "text", name: "ta15_alias", label: "ta15_alias" },
+                      { view: "text", name: "ta16_alias", label: "ta16_alias" },
+                    ],
+                  },
+                  {
+                    cols: [
+                      { view: "text", name: "ta17_alias", label: "ta17_alias" },
+                      { view: "text", name: "ta18_alias", label: "ta18_alias" },
+                      { view: "text", name: "ta19_alias", label: "ta19_alias" },
+                      { view: "text", name: "ta20_alias", label: "ta20_alias" },
+                    ],
+                  },
+                  {
+                    cols: [
+                      { view: "text", name: "sl1_alias", label: "sl1_alias" },
+                      { view: "text", name: "sl2_alias", label: "sl2_alias" },
+                      { view: "text", name: "sl3_alias", label: "sl3_alias" },
+                      { view: "text", name: "sl4_alias", label: "sl4_alias" },
+                    ],
+                  },
+                  {
+                    cols: [
+                      { view: "text", name: "sl5_alias", label: "sl5_alias" },
+                      { view: "text", name: "sl6_alias", label: "sl6_alias" },
+                      { view: "text", name: "sl7_alias", label: "sl7_alias" },
+                      { view: "text", name: "sl8_alias", label: "sl8_alias" },
+                    ],
+                  },
+                  {
+                    cols: [
+                      { view: "text", name: "sl9_alias", label: "sl9_alias" },
+                      { view: "text", name: "sl10_alias", label: "sl10_alias" },
+                      { view: "text", name: "sl11_alias", label: "sl11_alias" },
+                      { view: "text", name: "sl12_alias", label: "sl12_alias" },
+                    ],
+                  },
+                  {
+                    cols: [
+                      { view: "text", name: "sl13_alias", label: "sl13_alias" },
+                      { view: "text", name: "sl14_alias", label: "sl14_alias" },
+                      { view: "text", name: "sl15_alias", label: "sl15_alias" },
+                      { view: "text", name: "sl16_alias", label: "sl16_alias" },
+                    ],
+                  },
+                  {
+                    cols: [
+                      { view: "text", name: "sl17_alias", label: "sl17_alias" },
+                      { view: "text", name: "sl18_alias", label: "sl18_alias" },
+                      { view: "text", name: "sl19_alias", label: "sl19_alias" },
+                      { view: "text", name: "sl20_alias", label: "sl20_alias" },
+                    ],
+                  },
+                  {
+                    cols: [
+                      {
+                        view: "text",
+                        type: "number",
+                        name: "sl1_list",
+                        label: "sl1_list",
+                      },
+                      {
+                        view: "text",
+                        type: "number",
+                        name: "sl2_list",
+                        label: "sl2_list",
+                      },
+                      {
+                        view: "text",
+                        type: "number",
+                        name: "sl3_list",
+                        label: "sl3_list",
+                      },
+                      {
+                        view: "text",
+                        type: "number",
+                        name: "sl4_list",
+                        label: "sl4_list",
+                      },
+                    ],
+                  },
+                  {
+                    cols: [
+                      {
+                        view: "text",
+                        type: "number",
+                        name: "sl5_list",
+                        label: "sl5_list",
+                      },
+                      {
+                        view: "text",
+                        type: "number",
+                        name: "sl6_list",
+                        label: "sl6_list",
+                      },
+                      {
+                        view: "text",
+                        type: "number",
+                        name: "sl7_list",
+                        label: "sl7_list",
+                      },
+                      {
+                        view: "text",
+                        type: "number",
+                        name: "sl8_list",
+                        label: "sl8_list",
+                      },
+                    ],
+                  },
+                  {
+                    cols: [
+                      {
+                        view: "text",
+                        type: "number",
+                        name: "sl9_list",
+                        label: "sl9_list",
+                      },
+                      {
+                        view: "text",
+                        type: "number",
+                        name: "sl10_list",
+                        label: "sl10_list",
+                      },
+                      {
+                        view: "text",
+                        type: "number",
+                        name: "sl11_list",
+                        label: "sl11_list",
+                      },
+                      {
+                        view: "text",
+                        type: "number",
+                        name: "sl12_list",
+                        label: "sl12_list",
+                      },
+                    ],
+                  },
+                  {
+                    cols: [
+                      {
+                        view: "text",
+                        type: "number",
+                        name: "sl13_list",
+                        label: "sl13_list",
+                      },
+                      {
+                        view: "text",
+                        type: "number",
+                        name: "sl14_list",
+                        label: "sl14_list",
+                      },
+                      {
+                        view: "text",
+                        type: "number",
+                        name: "sl15_list",
+                        label: "sl15_list",
+                      },
+                      {
+                        view: "text",
+                        type: "number",
+                        name: "sl16_list",
+                        label: "sl16_list",
+                      },
+                    ],
+                  },
+                  {
+                    cols: [
+                      {
+                        view: "text",
+                        type: "number",
+                        name: "sl17_list",
+                        label: "sl17_list",
+                      },
+                      {
+                        view: "text",
+                        type: "number",
+                        name: "sl18_list",
+                        label: "sl18_list",
+                      },
+                      {
+                        view: "text",
+                        type: "number",
+                        name: "sl19_list",
+                        label: "sl19_list",
+                      },
+                      {
+                        view: "text",
+                        type: "number",
+                        name: "sl20_list",
+                        label: "sl20_list",
+                      },
+                    ],
+                  },
+
+                  {
+                    view: "button",
+                    css: "webix_primary",
+                    label: "Submit",
+                    height: 40,
+                    inputWidth: 100,
+                    align: "center",
+                    id: "btn1",
+                    click: addData,
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      });
+
+function home(){
+   var Redirect = "{% url 'main' %}"
+              window.location.href = Redirect;
+}
+
+
+function test(){
+  var pk = {{pk}}
+ console.log("test",pk)
+ var Url = "{% url 'TestBuildingRetrieveAPIView' pk=1234 %}"
+  Url = Url.replace('1234', pk);
+  webix
+          .ajax()
+          .get(Url)
+          .then(function (data) {
+            
+            console.log("data",data.json())
+            $$("form").setValues(data.json());
+            
+          })
+          .catch((e) => {
+            console.log(JSON.parse(e.response));
+          });
+  
+}
+test()
+
+
+function addData() {
+        const dataForm = $$("form").getValues();
+
+        var url = window.location.href;
+        console.log(url)
+        if (url.includes("update")) {
+          var method = "PUT"
+          var pk = url.split("/");
+          pk = pk[pk.length - 1]
+          var Url = "{% url 'TestBuildingUpdateAPIView' pk=1234 %}"
+          Url = Url.replace('1234', pk);
+          Url = Url.replace('?', "");
+
+
+          webix
+          .ajax()
+          .put(Url, { ...dataForm })
+          .then(function (data) {
+            console.log(data.text());
+             var Redirect = "{% url 'main' %}"
+              window.location.href = Redirect;
+          })
+          .catch((e) => {
+            console.log(JSON.parse(e.response));
+          });
+
+          console.log(method, Url)
+        } else {
+          var Url = "{% url 'TestBuildingListCreateAPIView' %}"
+          var method = "POST"
+
+          console.log(method, Url)
+           webix
+          .ajax()
+          .post(Url, { ...dataForm })
+          .then(function (data) {
+            console.log(data.text());
+             var Redirect = "{% url 'main' %}"
+              window.location.href = Redirect;
+          })
+          .catch((e) => {
+            console.log(JSON.parse(e.response));
+          });
+
+        }
+         
+
+        return;
+        
+      }
+    </script>
+  </body>
+</html>

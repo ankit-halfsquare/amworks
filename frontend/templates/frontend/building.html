@@ -53,14 +53,8 @@
     console.log(url)
     if (url.includes("update")) {
       var method = "PUT"
-
       var pk = url.split("/");
-      console.log(pk)
-
       pk = pk[pk.length - 1]
-      console.log(pk)
-
-
       var Url = "{% url 'TestBuildingUpdateAPIView' pk=1234 %}"
       Url = Url.replace('1234', pk);
 
