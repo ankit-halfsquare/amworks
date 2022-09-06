@@ -133,13 +133,15 @@ webix.ui({
                   inputWidth: 200,
                   align: "center",
                   click: function () {
-                    var id = data.id;
-                    webix.send("http://127.0.0.1:8000/editData/", id, "GET");
-                    console.log("Name", data, data.id);
+
+                    var updateUrl ="{% url 'update'  pk=1234 %}"
+                    updateUrl = updateUrl.replace('1234', data.id);
+
+                    console.log("updateUrl",updateUrl)
+                    webix.send(updateUrl, null, "GET");
+
                     $$("dt").hide();
-                    $$("data").add({
-                      name: $$("list").getValues(),
-                    });
+                    
                   },
                 },
                 {
@@ -257,7 +259,10 @@ webix.ui({
                     data = this.getItem(id);
                     $$("list").clearAll();
                     for (key in data) {
+                      if (key!="id"){
                       $$("list").add({ key, data: data[key] });
+
+                      }
                     }
                     $$("dt").show();
                     //$$('myfrm').bind(data)
