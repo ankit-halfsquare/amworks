@@ -33,13 +33,6 @@
     />
     <script type="text/javascript" src="{% static 'data/data.js' %}"></script>
     <style>
-    .dataview-font{
-      font-size: 15px;
-       font-weight: bold;
-    }
-    .font2{
-      font-size: 15px;
-    }
       .webix_header {
         font-weight: bold;
         font-size: 25px;
@@ -59,14 +52,10 @@
       }
       .key_font {
         font-size: 20px;
-        padding-top: 5px;
-        padding-bottom: 5px;
         font-weight: bold;
       }
       .data_font {
         font-size: 16px;
-        padding: 5px;
-        border: 1px solid #000000;
       }
       .webix_dt_editor input,
       .webix_dt_editor select {
@@ -74,11 +63,20 @@
       }
       .webix_secondary .webix_button {
         font-size: 18px;
+        height: 34px;
       }
       .webix_primary .webix_button {
         font-size: 18px;
+        height: 34px;
       }
-      
+      .btn_wraper {
+        padding: 5px;
+      }
+      .webix_template {
+        justify-content: center;
+        align-items: center;
+        display: flex;
+      }
     </style>
   </head>
   <body>
@@ -93,30 +91,40 @@
         webix.ui.list
       );
 
-      webix.ui({
+
+ 
+  
+webix.ui({
         view: "window",
         id: "dt",
-        head: "",
+        head: "Building Details",
         modal: true,
         position: "center",
-        
-        
-        height: 600,
-        width: 1400,
+        autofit: true,
+        height: 800,
+        width: 1300,
         close: true,
-        onHide: () => {
-          $$("list").clearAll();
+        on: {
+          onHide: () => {
+            $$("list").clearAll();
+          },
         },
         css: "window_edit_list",
         body: {
           rows: [
-            
             {
-              "id": "list",
-							"view": "dataview",
-							"template": "<div class=''> <div class='dataview-font'> #key# </div> <div class='font2'> #data# </div> </div>",		
-						},
+              view: "dataview",
+              id: "list",
+              padding: 10,
+              type: {
+                width: 1300 / 2 - 10,
+              },
+              template:
+                "<div class='d-flex flex-wrap align-items-center h-100 '> <span class='w-25 key_font'> #key# </span> <span class='w-75 data_font'> #data# </span> </div>",
+            },
             {
+              height: 50,
+              css: "btn_wraper",
               cols: [
                 {
                   view: "button",
@@ -125,16 +133,13 @@
                   inputWidth: 200,
                   align: "center",
                   click: function () {
-                    var updateUrl ="{% url 'update'  pk=1234 %}"
-                    updateUrl = updateUrl.replace('1234', data.id);
-
-                    console.log("updateUrl",updateUrl)
-                    webix.send(updateUrl, null, "GET");
-                    console.log("Name", data.id);
+                    var id = data.id;
+                    webix.send("http://127.0.0.1:8000/editData/", id, "GET");
+                    console.log("Name", data, data.id);
                     $$("dt").hide();
-                   // $$("data").add({
-                   //   name: $$("list").getValues(),
-                  //  });
+                    $$("data").add({
+                      name: $$("list").getValues(),
+                    });
                   },
                 },
                 {
@@ -144,7 +149,6 @@
                   align: "center",
                   click: function () {
                     $$("dt").hide();
-                    $$("list").clearAll();
                   },
                 },
               ],
@@ -153,7 +157,7 @@
         },
       });
 
-  
+
       webix.ui({
         rows: [
           
