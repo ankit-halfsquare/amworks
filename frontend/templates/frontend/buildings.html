@@ -47,10 +47,14 @@
 
 
 <script>
+
+
+
+
     $(document).ready(function () {
 
 
-        function getBuildinds() {
+    function getBuildinds() {
 
             var url = "{% url 'TestBuildingListCreateAPIView' %}"
 
@@ -79,8 +83,15 @@
                 
                 viewUrl = viewUrl.replace('12345', row.id);
                 updateUrl = updateUrl.replace('12345', row.id);
-
                 console.log('viewUrl==>', viewUrl)
+
+                if(row.status == 'c'){
+                    row.status = "Close"
+                }else if (row.status == 'l'){
+                    row.status = "Lost"
+                }else if(row.status == '0'){
+                    row.status = "Open"
+                }
 
                 item += ` <tr>`
                     + `<th>${i + 1}</th>`
@@ -100,7 +111,7 @@
             var wrapper = document.getElementById("table-body");
             document.getElementById('loaderwrapper').style.display = 'none'
             wrapper.innerHTML = item;
-        }
+        }  
     }) 
 </script>
 
