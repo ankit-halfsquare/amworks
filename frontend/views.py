@@ -56,7 +56,6 @@ def updateBuilding(request,pk):
 
 def addBuilding(request):
     form = BuildingForm()
-    form = BuildingForm2()
     context = {"form":form}
     return render(request, 'frontend/building.html',context)
 

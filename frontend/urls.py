@@ -12,8 +12,8 @@ urlpatterns = [
 
 
    path('building/', views.addBuilding, name='building'),
-   path('building2/', views.addBuilding2, name='building'),
-   path('building3/', views.addBuilding3, name='building'),
+   path('building2/', views.addBuilding2, name='building2'),
+   path('building3/', views.addBuilding3, name='building3'),
 
 
    path('building/update/<int:pk>', views.updateBuilding, name='update-building'),
