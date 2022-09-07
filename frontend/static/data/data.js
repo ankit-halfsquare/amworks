@@ -47,7 +47,6 @@ const fetchApi = async () => {
   res = data;
 
   res.forEach((row) => {
-    console.log("Status", row.status);
     if (row.status == "o") {
       row.status = "Open";
     } else if (row.status == "c") {
@@ -56,6 +55,5 @@ const fetchApi = async () => {
       row.status = "Lost";
     }
   });
-  console.log("new data", res);
   return res;
 };

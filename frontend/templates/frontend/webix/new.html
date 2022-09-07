@@ -239,7 +239,6 @@
                   { id: "create_date", header: "Create_date" },
                   { id: "create_user", header: "create_user" },
                   { id: "update_date", header: "update_date" },
-
                   {
                     header: "Action",
                     template:
@@ -261,20 +260,23 @@
                     //$$('myfrm').bind(data)
                   },
                 },
-                on: {
-                  onAfterLoad: function () {
-                    var record = $$("data").getItem();
-                    console.log("record", record);
-                    //for (row in dtd) {
-                    // console.log("row", row);
-                    //}
-                  },
-                },
               },
             ],
           },
         ],
       });
+
+      webix.extend($$("data"), webix.ProgressBar);
+      function show_progress_icon(delay) {
+        $$("data").showProgress({
+          delay: delay,
+          hide: true,
+        });
+        setTimeout(function () {
+          $$("data").parse(fetchApi());
+        }, delay);
+      }
+      show_progress_icon(2000);
     </script>
   </body>
 </html>
