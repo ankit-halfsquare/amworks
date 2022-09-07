@@ -12,7 +12,6 @@ from .forms import BuildingForm,BuildingForm2,BuildingForm3
 
 
 
-
 def sidebar(request):
     return render(request, 'frontend/sidebar.html')
 
