@@ -28,7 +28,7 @@ def add(request,pk=None):
     conntext={
         "pk":pk
     }
-    return render(request, 'frontend/webix/addData.html',conntext)
+    return render(request, 'frontend/webix/addData2.html',conntext)
 
 
 

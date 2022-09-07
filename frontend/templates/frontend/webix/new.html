@@ -81,8 +81,6 @@
   </head>
   <body>
     <script type="text/javascript">
-   
-
       webix.protoUI(
         {
           name: "editlist",
@@ -91,10 +89,7 @@
         webix.ui.list
       );
 
-
- 
-  
-webix.ui({
+      webix.ui({
         view: "window",
         id: "dt",
         head: "Building Details",
@@ -133,15 +128,13 @@ webix.ui({
                   inputWidth: 200,
                   align: "center",
                   click: function () {
+                    var updateUrl = "{% url 'update'  pk=1234 %}";
+                    updateUrl = updateUrl.replace("1234", data.id);
 
-                    var updateUrl ="{% url 'update'  pk=1234 %}"
-                    updateUrl = updateUrl.replace('1234', data.id);
-
-                    console.log("updateUrl",updateUrl)
+                    console.log("updateUrl", updateUrl);
                     webix.send(updateUrl, null, "GET");
 
                     $$("dt").hide();
-                    
                   },
                 },
                 {
@@ -159,10 +152,8 @@ webix.ui({
         },
       });
 
-
       webix.ui({
         rows: [
-          
           {
             view: "toolbar",
             css: "webix_dark",
@@ -175,12 +166,16 @@ webix.ui({
               {
                 view: "sidebar",
                 data: menu_data,
-                autoheight:true,
-                autowidth:true,
+                autoheight: true,
+                autowidth: true,
                 on: {
                   onAfterSelect: function (id) {
-                    if(this.getItem(id).value=="Add Building"){
-                      webix.send("https://amworksweb.azurewebsites.net/webix/add/",null,"GET")
+                    if (this.getItem(id).value == "Add Building") {
+                      webix.send(
+                        "https://amworksweb.azurewebsites.net/webix/add/",
+                        null,
+                        "GET"
+                      );
                     }
                     webix.message("Selected: " + this.getItem(id).value);
                   },
@@ -244,7 +239,6 @@ webix.ui({
                   { id: "create_date", header: "Create_date" },
                   { id: "create_user", header: "create_user" },
                   { id: "update_date", header: "update_date" },
-                 
 
                   {
                     header: "Action",
@@ -259,13 +253,21 @@ webix.ui({
                     data = this.getItem(id);
                     $$("list").clearAll();
                     for (key in data) {
-                      if (key!="id"){
-                      $$("list").add({ key, data: data[key] });
-
+                      if (key != "id") {
+                        $$("list").add({ key, data: data[key] });
                       }
                     }
                     $$("dt").show();
                     //$$('myfrm').bind(data)
+                  },
+                },
+                on: {
+                  onAfterLoad: function () {
+                    var record = $$("data").getItem();
+                    console.log("record", record);
+                    //for (row in dtd) {
+                    // console.log("row", row);
+                    //}
                   },
                 },
               },
