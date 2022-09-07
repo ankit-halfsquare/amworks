@@ -7,7 +7,7 @@ from django.urls import reverse_lazy, reverse
 from core.models import TestBuilding,TestBuildingItem
 from core.api.serializers import TestBuildingSerializer
 
-from .forms import BuildingForm
+from .forms import BuildingForm,BuildingForm2,BuildingForm3
 
 
 
@@ -56,6 +56,19 @@ def updateBuilding(request,pk):
 
 def addBuilding(request):
     form = BuildingForm()
+    form = BuildingForm2()
+    context = {"form":form}
+    return render(request, 'frontend/building.html',context)
+
+
+
+def addBuilding2(request):
+    form = BuildingForm2()
+    context = {"form":form}
+    return render(request, 'frontend/building.html',context)
+
+def addBuilding3(request):
+    form = BuildingForm3()
     context = {"form":form}
     return render(request, 'frontend/building.html',context)
 
