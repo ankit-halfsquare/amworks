@@ -10,6 +10,9 @@ urlpatterns = [
    path('webix/sidebar/', views.sidebar, name='sidebar'),
 
 
+   path('loader/', views.loader, name='loader'),
+
+
 
    path('building/', views.addBuilding, name='building'),
    path('building2/', views.addBuilding2, name='building2'),
