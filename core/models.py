@@ -286,7 +286,7 @@ class TestBuilding(models.Model):
     state = models.CharField(max_length=50, blank=True, null=True)
     country = models.CharField(max_length=50, blank=True, null=True)
     zip = models.CharField(max_length=128, blank=True, null=True)
-    status = models.CharField(max_length=50,choices=STATUS_CHOICES, default='o', blank=True, null=True)
+    status = models.CharField(max_length=50,choices=STATUS_CHOICES, default='o')
     create_date = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     create_user = models.IntegerField(blank=True, null=True)
     update_date = models.DateTimeField(auto_now=True, blank=True, null=True)

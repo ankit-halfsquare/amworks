@@ -11,6 +11,8 @@ from .forms import BuildingForm,BuildingForm2,BuildingForm3
 
 
 
+def loader(request):
+    return render(request, 'frontend/loader.html')
 
 def sidebar(request):
     return render(request, 'frontend/sidebar.html')
