@@ -1,8 +1,4 @@
-{% extends 'frontend/base.html' %}
-{% load static %}
-
-{%load crispy_forms_tags %}
-
+{% extends 'frontend/base.html' %} {% load static %} {%load crispy_forms_tags %}
 {% block content %}
 
 <section class="section">
@@ -15,18 +11,15 @@
       </div>
       <div class="col-md-12">
         <div class="details-card">
-
           <form id="myForm" , method="POST" class="d-flex flex-wrap">
-            {% csrf_token %}
-            {{ form.non_field_errors }}
-            {{ form|crispy }}
+            {% csrf_token %} {{ form.non_field_errors }} {{ form|crispy }}
             <div class="col-md-12 mt-3 border-top pt-4">
               <button class="btn btn-primary btn-round">Submit</button>
               <button class="btn btn-secondary ml-3 btn-round">Cancel</button>
             </div>
           </form>
-          <div  style="display:none;" id = "loaderwrapper" class="loaderwrapper">
-                <div class="loader"></div>
+          <div style="display: none" id="loaderwrapper" class="loaderwrapper">
+            <div class="loader"></div>
           </div>
         </div>
       </div>
@@ -34,51 +27,43 @@
   </div>
 </section>
 
-
-{% endblock %}
-
-{% block script_file %}
+{% endblock %} {% block script_file %}
 <script>
-
   var form = document.getElementById("myForm");
   form.addEventListener("submit", function (e) {
     e.preventDefault();
-    document.getElementById('loaderwrapper').style.display = 'flex'
+    document.getElementById("loaderwrapper").style.display = "flex";
     var serializedData = $(this).serialize();
     var url = window.location.href;
-    console.log(url)
+    console.log(url);
     if (url.includes("update")) {
-      var method = "PUT"
+      var method = "PUT";
       var pk = url.split("/");
-      pk = pk[pk.length - 1]
-      var Url = "{% url 'TestBuildingUpdateAPIView' pk=1234 %}"
-      Url = Url.replace('1234', pk);
+      pk = pk[pk.length - 1];
+      var Url = "{% url 'TestBuildingUpdateAPIView' pk=1234 %}";
+      Url = Url.replace("1234", pk);
 
-      console.log(method, Url)
+      console.log(method, Url);
     } else {
-      var Url = "{% url 'TestBuildingListCreateAPIView' %}"
-      var method = "POST"
+      var Url = "{% url 'TestBuildingListCreateAPIView' %}";
+      var method = "POST";
 
-      console.log(method, Url)
-
+      console.log(method, Url);
     }
 
     $.ajax({
       method: method,
       url: Url,
       data: serializedData,
-    }).done(function (msg) {
-      console.log("msg", msg);
-      var Redirect = "{% url 'home' %}"
-      window.location.href = Redirect;
-
-    }).fail(function (error) {
-      console.log("error", error.responseJSON);
-    });
-
-
-
+    })
+      .done(function (msg) {
+        console.log("msg", msg);
+        var Redirect = "{% url 'home' %}";
+        window.location.href = Redirect;
+      })
+      .fail(function (error) {
+        console.log("error", error.responseJSON);
+      });
   });
-
 </script>
 {% endblock %}

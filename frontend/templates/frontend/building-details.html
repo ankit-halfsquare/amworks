@@ -3,35 +3,38 @@
 
 {% block content %}
 <section class="section">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-12">
-              <div class="tableheader">
-                <h4 class="details-title mb-0"><small class="text-muted d-block font-12">Building Name</small>{{data.name}}</h4>
-                <h4 class="details-title mb-0 ml-4"><small class="text-muted d-block font-12">Organization ID</small>#{{data.organization_id}}</h4>
-                <h4 class="details-title mb-0 ml-4 mr-auto"><small class="text-muted d-block font-12">City</small>{{data.city}}</h4>
-                <a class="btn btn-primary btn-round" href={% url 'update-building'  data.id %}>Edit</a>
-                <a class="btn btn-danger btn-round ml-3" href="{% url 'home' %}">Back</a> 
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-12">
+        <div class="tableheader">
+          <h4 class="details-title mb-0"><small class="text-muted d-block font-12">Building Name</small>{{data.name}}
+          </h4>
+          <h4 class="details-title mb-0 ml-4"><small class="text-muted d-block font-12">Organization
+              ID</small>#{{data.organization_id}}</h4>
+          <h4 class="details-title mb-0 ml-4 mr-auto"><small
+              class="text-muted d-block font-12">City</small>{{data.city}}</h4>
+          <a class="btn btn-primary btn-round" href="{% url 'update-building' data.id %}">Edit</a>
+          <a class="btn btn-danger btn-round ml-3" href="{% url 'home' %}">Back</a>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="details-card">
+          <div class="row">
+            {% for key, values in data.items %}
+            {% if key != 'id' %}
+            <div class="col-md-4">
+              <div class="detilslist">
+                <small> {{key|title}}</small>
+                <label>{{values}}</label>
               </div>
             </div>
-            <div class="col-md-12">
-              <div class="details-card">
-                  <div class="row">
-                    {% for key, values in data.items %}
-                    {% if key != 'id' %}
-                    <div class="col-md-4">
-                        <div class="detilslist">
-                          <small >	{{key|title}}</small>
-                          <label>{{values}}</label>
-                        </div>
-                    </div>
-                    {% endif %}
-                    {% endfor %}    
-                  </div>
-              </div>
-            </div>
+            {% endif %}
+            {% endfor %}
           </div>
+        </div>
+      </div>
     </div>
+  </div>
 </section>
 
 {% endblock %}
