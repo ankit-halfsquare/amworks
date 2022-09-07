@@ -83,15 +83,19 @@
                 
                 viewUrl = viewUrl.replace('12345', row.id);
                 updateUrl = updateUrl.replace('12345', row.id);
-                console.log('viewUrl==>', viewUrl)
+                //console.log('viewUrl==>', viewUrl)
 
+
+                console.log('row.status==>1', row.status)
                 if(row.status == 'c'){
                     row.status = "Close"
                 }else if (row.status == 'l'){
                     row.status = "Lost"
-                }else if(row.status == '0'){
+                }else if(row.status == 'o'){
                     row.status = "Open"
                 }
+                console.log('row.status==>2', row.status)
+
 
                 item += ` <tr>`
                     + `<th>${i + 1}</th>`
