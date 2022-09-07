@@ -271,7 +271,12 @@ class BuildingItem(models.Model):
 
 
 
-
+STATUS_CHOICES = (
+    ('o','OPEN'),
+    ('c', 'CLOSE'),
+    ('l','LOST'),
+    
+)
 class TestBuilding(models.Model):
     id = models.AutoField(primary_key=True)  
     organization_id = models.IntegerField(blank=True, null=True)
@@ -281,7 +286,7 @@ class TestBuilding(models.Model):
     state = models.CharField(max_length=50, blank=True, null=True)
     country = models.CharField(max_length=50, blank=True, null=True)
     zip = models.CharField(max_length=128, blank=True, null=True)
-    status = models.CharField(max_length=50, blank=True, null=True)
+    status = models.CharField(max_length=50,choices=STATUS_CHOICES, default='o', blank=True, null=True)
     create_date = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     create_user = models.IntegerField(blank=True, null=True)
     update_date = models.DateTimeField(auto_now=True, blank=True, null=True)
@@ -308,45 +313,25 @@ class TestBuilding(models.Model):
     ta19_alias = models.CharField(max_length=255, blank=True, null=True)
     ta20_alias = models.CharField(max_length=255, blank=True, null=True)
     sl1_alias = models.CharField(max_length=255, blank=True, null=True)
-    
     sl2_alias = models.CharField(max_length=255, blank=True, null=True)
-    
     sl3_alias = models.CharField(max_length=255, blank=True, null=True)
-    
     sl4_alias = models.CharField(max_length=255, blank=True, null=True)
-    
     sl5_alias = models.CharField(max_length=255, blank=True, null=True)
-    
     sl6_alias = models.CharField(max_length=255, blank=True, null=True)
-    
     sl7_alias = models.CharField(max_length=255, blank=True, null=True)
-    
     sl8_alias = models.CharField(max_length=255, blank=True, null=True)
-    
     sl9_alias = models.CharField(max_length=255, blank=True, null=True)
-    
     sl10_alias = models.CharField(max_length=255, blank=True, null=True)
-    
     sl11_alias = models.CharField(max_length=255, blank=True, null=True)
-    
-    sl12_alias = models.CharField(max_length=255, blank=True, null=True)
-    
+    sl12_alias = models.CharField(max_length=255, blank=True, null=True) 
     sl13_alias = models.CharField(max_length=255, blank=True, null=True)
-    
     sl14_alias = models.CharField(max_length=255, blank=True, null=True)
-    
     sl15_alias = models.CharField(max_length=255, blank=True, null=True)
-    
-    sl16_alias = models.CharField(max_length=255, blank=True, null=True)
-    
+    sl16_alias = models.CharField(max_length=255, blank=True, null=True) 
     sl17_alias = models.CharField(max_length=255, blank=True, null=True)
-    
     sl18_alias = models.CharField(max_length=255, blank=True, null=True)
-    
     sl19_alias = models.CharField(max_length=255, blank=True, null=True)
-    
     sl20_alias = models.CharField(max_length=255, blank=True, null=True)
-
     sl10_list = models.IntegerField(blank=True, null=True)
     sl11_list = models.IntegerField(blank=True, null=True)
     sl12_list = models.IntegerField(blank=True, null=True)
