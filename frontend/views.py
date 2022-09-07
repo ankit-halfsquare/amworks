@@ -12,7 +12,6 @@ from .forms import BuildingForm,BuildingForm2,BuildingForm3
 
 
 
-
 def sidebar(request):
     return render(request, 'frontend/sidebar.html')
 
@@ -28,7 +27,7 @@ def add(request,pk=None):
     conntext={
         "pk":pk
     }
-    return render(request, 'frontend/webix/addData.html',conntext)
+    return render(request, 'frontend/webix/addData2.html',conntext)
 
 
 

@@ -1,0 +1,192 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Form</title>
+    <script
+      type="text/javascript"
+      src="{% static 'codebase/webix.js' %}"
+    ></script>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'codebase/webix.css' %}"
+    />
+
+    <link
+      rel="stylesheet"
+      href="//cdn.webix.com/materialdesignicons/5.8.95/css/materialdesignicons.min.css?v=9.2.2"
+      type="text/css"
+      charset="utf-8"
+    />
+
+    <script type="text/javascript" src="{% static 'data/data.js' %}"></script>
+
+    <style>
+      .textbox {
+        width: 300px;
+      }
+    </style>
+  </head>
+  <body>
+    <script type="text/javascript">
+            webix.ui({
+              rows: [
+                {
+                  view: "toolbar",
+                  css: "webix_dark",
+                  padding: { right: 10, left: 10 },
+                  elements: [{ view: "label", label: "Home" ,click: home}],
+
+                },
+                {
+                  cols: [
+                    {
+                      autoheight: false,
+                      id: "form",
+                      view: "form",
+                      css: "textbox",
+                      scrollY: true,
+                      scrollX: true,
+                      rows: [
+                            {
+                              view: "text",
+                              type: "number",
+                              label: "organization_id",
+                              name: "organization_id",
+
+                            },
+                            { view: "text", label: "Name", name: "name" },
+                            {
+                              view: "text",
+                              label: "Code",
+                              name: "code",
+                            },
+                            { view: "text", label: "City", name: "city" },
+                            { view: "text", label: "State", name: "state" },
+                            { view: "text", label: "Country", name: "country" },
+                            { view: "text", label: "Zip", name: "zip" },
+                            { view: "select", label: "Status", name: "status" ,value:'O', options:[
+                                  { "id":'o', "value":"Open" },
+                                  { "id":'c', "value":"Closed" },
+                                  { "id":'l', "value":"Lost" },]
+                            },
+                            {
+                              view: "text",
+                              label: "Create_date",
+                              name: "create_date",
+                            },
+                            {
+                              view: "text",
+                              type: "number",
+                              name: "create_user",
+                              label: "create_user",
+                            },
+                            {
+                            view: "button",
+                            css: "webix_primary",
+                            label: "Submit",
+                            height: 40,
+                            inputWidth: 100,
+                            align: "center",
+                            id: "btn1",
+                            click: addData,
+                            },
+                        ],
+                    },
+                  ],
+                },
+              ],
+            });
+
+      function home(){
+         var Redirect = "{% url 'main' %}"
+                    window.location.href = Redirect;
+      }
+
+
+      function test(){
+        var pk = {{pk}}
+       console.log("test",pk)
+       var Url = "{% url 'TestBuildingRetrieveAPIView' pk=1234 %}"
+        Url = Url.replace('1234', pk);
+
+        Url = `https://amworksweb.azurewebsites.net/core/api/test-building/${pk}/`
+        webix
+                .ajax()
+                .get(Url)
+                .then(function (data) {
+                  console.log("data",data.json())
+                  $$("form").setValues(data.json());
+
+                })
+                .catch((e) => {
+                  console.log(JSON.parse(e.response));
+                });
+
+      }
+      test()
+
+
+      function addData() {
+              const dataForm = $$("form").getValues();
+              console.log("DataForm",dataForm)
+              var url = window.location.href;
+              console.log("ADD",url)
+            if (url.includes("update")) {
+                var method = "PUT"
+                var pk = url.split("/");
+                pk = pk[pk.length - 1]
+                var Url = "{% url 'TestBuildingUpdateAPIView' pk=1234 %}"
+                Url = Url.replace('1234', pk);
+                Url = Url.replace('?', "");
+
+                Url = `https://amworksweb.azurewebsites.net/core/api/test-building/update/${pk}/`
+                Url = Url.replace('?', "");
+
+
+                webix
+                .ajax()
+                .put(Url, { ...dataForm })
+                .then(function (data) {
+                  console.log("ADHSGSJHG",data.text());
+
+                   var Redirect = "{% url 'main' %}"
+                window.location.href = Redirect;
+                })
+                .catch((e) => {
+                  console.log(JSON.parse(e.response));
+                });
+
+                console.log(method, Url)
+              }
+               else {
+                var Url = "{% url 'TestBuildingListCreateAPIView' %}"
+
+                Url = "https://amworksweb.azurewebsites.net/core/api/test-building/"
+                var method = "POST"
+
+                console.log(method, Url)
+                 webix
+                .ajax()
+                .post(Url, { ...dataForm })
+                .then(function (data) {
+                  console.log(data.text());
+                   var Redirect = "{% url 'main' %}"
+                    window.location.href = Redirect;
+                })
+                .catch((e) => {
+                  console.log(JSON.parse(e.response));
+                });
+
+              }
+
+
+              return;
+
+            }
+    </script>
+  </body>
+</html>
