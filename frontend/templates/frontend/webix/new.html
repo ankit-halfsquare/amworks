@@ -40,12 +40,13 @@
       }
       .webix_column.webix_last > div {
         align-items: center;
-        border-right-width: 0px;
+        border-right-width: 1px;
         justify-content: center;
         display: flex;
       }
-      .btn {
+      .link {
         font-weight: bold;
+        font-size: 12px;
       }
       .key_font {
         font-size: 20px;
@@ -190,7 +191,7 @@
                   {
                     header: "Action",
                     template:
-                      "<a class='viewbtn ' type='button' value='View'>View</a>",
+                      "<div class='link'><a class='viewbtn ' type='button' value='View'>View</a></div>",
                     width: 100,
                   },
                   { id: "id", header: "ID", css: "rank", width: 50 },

@@ -12,6 +12,8 @@ urlpatterns = [
 
    path('loader/', views.loader, name='loader'),
 
+   path('webix/form/', views.form, name='form'),
+
 
 
    path('building/', views.addBuilding, name='building'),

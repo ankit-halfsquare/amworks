@@ -31,6 +31,8 @@ def add(request,pk=None):
     }
     return render(request, 'frontend/webix/addData2.html',conntext)
 
+def form(request):
+    return render(request, 'frontend/webix/form.html')
 
 
 
