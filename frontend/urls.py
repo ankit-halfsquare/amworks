@@ -12,6 +12,13 @@ urlpatterns = [
 
    path('loader/', views.loader, name='loader'),
 
+<<<<<<< HEAD
+=======
+   path('webix/form/', views.form, name='form'),
+
+
+
+>>>>>>> 7524f6ffba12a71dbc1f47eb0fd044b3eaeb0ad1
    path('building/', views.addBuilding, name='building'),
    path('building2/', views.addBuilding2, name='building2'),
    path('building3/', views.addBuilding3, name='building3'),

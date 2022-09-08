@@ -40,15 +40,13 @@
       }
       .webix_column.webix_last > div {
         align-items: center;
-        border-right-width: 0px;
+        border-right-width: 1px;
         justify-content: center;
         display: flex;
       }
-      .btn {
-        background: #27ae60;
-        color: #ffffff;
-        border-radius: 20px;
-        padding: 1px 10px;
+      .link {
+        font-weight: bold;
+        font-size: 12px;
       }
       .key_font {
         font-size: 20px;
@@ -190,9 +188,13 @@
                 undo: false,
                 sort: true,
                 columns: [
+                  {
+                    header: "Action",
+                    template:
+                      "<div class='link'><a class='viewbtn ' type='button' value='View'>View</a></div>",
+                    width: 100,
+                  },
                   { id: "id", header: "ID", css: "rank", width: 50 },
-                  { id: "organization_id", header: "organization_id" },
-
                   { id: "name", header: "Name", width: 100 },
 
                   {
@@ -239,12 +241,6 @@
                   { id: "create_date", header: "Create_date" },
                   { id: "create_user", header: "create_user" },
                   { id: "update_date", header: "update_date" },
-                  {
-                    header: "Action",
-                    template:
-                      "<input class='viewbtn btn' type='button' value='View'>",
-                    width: 100,
-                  },
                 ],
                 // a click behavior for the cell with a button styled with 'delbtn' class
                 onClick: {
