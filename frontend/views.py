@@ -18,6 +18,7 @@ def sidebar(request):
     return render(request, 'frontend/sidebar.html')
 
 
+
 def static_db(request):
     return render(request, 'frontend/table.html')
 
