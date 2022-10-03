@@ -169,11 +169,7 @@
                 on: {
                   onAfterSelect: function (id) {
                     if (this.getItem(id).value == "Add Building") {
-                      webix.send(
-                        "https://amworksweb.azurewebsites.net/webix/add/",
-                        null,
-                        "GET"
-                      );
+                      webix.send(`${domain_url}webix/add/`, null, "GET");
                     }
                     webix.message("Selected: " + this.getItem(id).value);
                   },

@@ -100,7 +100,7 @@
        var Url = "{% url 'TestBuildingRetrieveAPIView' pk=1234 %}"
         Url = Url.replace('1234', pk);
 
-        Url = `https://amworksweb.azurewebsites.net/core/api/test-building/${pk}/`
+        Url = `${domain_url}core/api/test-building/${pk}/`
         webix
                 .ajax()
                 .get(Url)
@@ -130,7 +130,7 @@
                 Url = Url.replace('1234', pk);
                 Url = Url.replace('?', "");
 
-                Url = `https://amworksweb.azurewebsites.net/core/api/test-building/update/${pk}/`
+                Url = `${domain_url}core/api/test-building/update/${pk}/`
                 Url = Url.replace('?', "");
 
 
@@ -152,7 +152,7 @@
                else {
                 var Url = "{% url 'TestBuildingListCreateAPIView' %}"
 
-                Url = "https://amworksweb.azurewebsites.net/core/api/test-building/"
+                Url = `${domain_url}core/api/test-building/`
                 var method = "POST"
 
                 console.log(method, Url)
