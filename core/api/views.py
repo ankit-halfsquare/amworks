@@ -41,7 +41,7 @@ class PeopleUpdateAPIView(generics.UpdateAPIView):
     # def perform_update(self, serializer): # optional if need any modification before
     #     title = serializer.validated_data.get('title')
     #     content = serializer.validated_data.get('content') or None
-    #     if content is None:
+    #     if content is None: 
     #             content = title
     #     instance = serializer.save(content=content)
 
@@ -87,7 +87,7 @@ class BuildingRetrieveAPIView(generics.RetrieveAPIView):
     serializer_class = BuildingSerializer
     lookup_field = 'pk'
 
-class BuildingUpdateAPIView(generics.UpdateAPIView):
+class BuildingUpdateAPIView(generics.UpdateAPIView): 
     queryset = Building.objects.all()
     serializer_class = BuildingSerializer
     lookup_field = 'pk'
@@ -238,7 +238,7 @@ class ProjectView(APIView):
 
 class BuildingView(APIView):
     def get(self, request,pk=None, *args, **kwargs):
-        id = pk
+        id = pk 
         if id:
             Building_obj = Building.objects.get(id=id)
             serializer = BuildingSerializer(Building_obj)

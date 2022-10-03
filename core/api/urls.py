@@ -58,7 +58,5 @@ urlpatterns = [
     path("test-building-item/delete/<int:pk>/", views.TestBuildingItemDestroyAPIView.as_view(), name = "TestBuildingItemDestroyAPIView"),
 
 
-   
-
 ]
 
